@@ -1,0 +1,82 @@
+PS C:\Users\ae265\Documents\programming\work\myblog> php artisan make:model Post --migration
+Model created successfully.
+Created Migration: 2021_01_13_202139_create_posts_table
+PS C:\Users\ae265\Documents\programming\work\myblog> php artisan migrate
+Migration table created successfully.
+Migrating: 2021_01_13_202139_create_posts_table
+Migrated:  2021_01_13_202139_create_posts_table (0.02 seconds)
+PS C:\Users\ae265\Documents\programming\work\myblog> php artisan tinker
+Psy Shell v0.10.5 (PHP 8.0.0 — cli) by Justin Hileman
+>>> $post = new App\Post();
+=> App\Post {#3225}
+>>> $post->title = 'title1';
+=> "title1"
+>>> $post->body = 'body1';
+=> "body1"
+>>> $post->save();
+=> true
+>>> App\Post::all();
+=> Illuminate\Database\Eloquent\Collection {#3948
+     all: [
+       App\Post {#3947
+         id: 1,
+         title: "title1",
+         created_at: "2021-01-13 20:32:31",
+         updated_at: "2021-01-13 20:32:31",
+       },
+     ],
+   }
+=> [
+     [
+       "id" => 1,
+       "title" => "title1",
+       "body" => "body1",
+       "created_at" => "2021-01-13 20:32:31",
+       "updated_at" => "2021-01-13 20:32:31",
+     ],
+   ]
+>>> App\Post::create(['title'=>'title2','body'=>'body2']);
+Illuminate\Database\Eloquent\MassAssignmentException with message 'Add [title] to fillable property to allow mass assignment on [App\Post].'
+>>> exit
+Exit:  Goodbye
+PS C:\Users\ae265\Documents\programming\work\myblog> php artisan tinker
+Psy Shell v0.10.5 (PHP 8.0.0 — cli) by Justin Hileman
+>>> App\Post::create(['title'=>'title2','body'=>'body2']);
+=> App\Post {#4102
+     title: "title2",
+     body: "body2",
+     updated_at: "2021-01-13 20:38:42",
+     created_at: "2021-01-13 20:38:42",
+     id: 2,
+   }
+>>> App\Post::create(['title'=>'title3','body'=>'body3']);
+=> App\Post {#3541
+     title: "title3",
+     body: "body3",
+     updated_at: "2021-01-13 20:39:07",
+     created_at: "2021-01-13 20:39:07",
+     id: 3,
+   }
+>>> App\Post::all()->toArray();
+=> [
+     [
+       "id" => 1,
+       "title" => "title1",
+       "body" => "body1",
+       "updated_at" => "2021-01-13 20:32:31",
+     ],
+     [
+       "id" => 2,
+       "title" => "title2",
+       "body" => "body2",
+       "created_at" => "2021-01-13 20:38:42",
+       "updated_at" => "2021-01-13 20:38:42",
+     ],
+     [
+       "id" => 3,
+       "title" => "title3",
+       "body" => "body3",
+       "created_at" => "2021-01-13 20:39:07",
+       "updated_at" => "2021-01-13 20:39:07",
+     ],
+   ]
