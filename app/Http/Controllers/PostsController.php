@@ -17,10 +17,25 @@ class PostsController extends Controller
         return view('posts.index')->with('posts', $posts);
     }
 
-    public function show($id) {
+    public function show(Post $post) {
         // $post = Post::find($id);
-        $post = Post::findOrFail($id);
+        // $post = Post::findOrFail($id);
         return view('posts.show')->with('post', $post);
     }
 
+    public function create() {
+        return view('posts.create');
+    }
+
+    public function store(Request $request) {
+        $this->validate($request, [
+            'title' => 'required|min:3',
+            'body' => 'required'
+        ]);
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        return redirect('/');
+    }
 }

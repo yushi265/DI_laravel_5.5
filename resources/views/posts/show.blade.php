@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.default')
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
-  <title>{{ $post->title }}</title>
-</head>
+@section('title', $post->title)
 
-<body>
-  <div class="container">
-    <h1>{{ $post->title }}</h1>
+@section('content')
+    <h1>
+        <a href="{{ url('/') }}" class="header-menu">Back</a>
+        {{ $post->title }}
+    </h1>
     <p>{!! nl2br(e($post->body)) !!}</p>
-  </div>
-</body>
-
-</html>
+@endsection
