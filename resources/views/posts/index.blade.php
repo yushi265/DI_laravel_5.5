@@ -1,9 +1,5 @@
 @extends('layouts.default')
 
-{{-- @section('title')
-Blog Posts
-@endsection --}}
-
 @section('title', 'Blog Posts')
 
 @section('content')
@@ -21,8 +17,6 @@ Blog Posts
                 {{ csrf_field() }}
                 {{ method_field('delete') }}
             </form>
-
-
         </li>
       @empty
         <li>No posts yet</li>
