@@ -18,3 +18,4 @@ Route::get('/posts/{post}', 'PostController@show')->where('post', '[0-9]+');
 Route::get('/posts/{post}/edit', 'PostController@edit');
 Route::patch('/posts/{post}', 'PostController@update');
 Route::delete('/posts/{post}', 'PostController@destroy');
+Route::post('/posts/{post}/comments', 'CommentController@store');
