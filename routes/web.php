@@ -20,3 +20,7 @@ Route::patch('/posts/{post}', 'PostController@update');
 Route::delete('/posts/{post}', 'PostController@destroy');
 Route::post('/posts/{post}/comments', 'CommentController@store');
 Route::delete('/posts/{post}/comments/{comment}', 'CommentController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
